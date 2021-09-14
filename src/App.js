@@ -56,35 +56,37 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="title"><h2>Welcome to Your Perosnal Reminder App</h2>
-          <p>To-Do List!</p></div>
+      <div className="app"><div className="title"><h2>Welcome to Your Perosnal Reminder App</h2>
+            <p>To-Do List!</p></div>
+        <div className="container">
+          
 
-        <div className="form">
-          <form onSubmit={this.handleSubmit}>
-            <label htmlFor="subject">Subject:</label>
-            <input type="text" value={this.state.subject} onChange={this.handleChange} id="subject" />
-            <br />
+          <div className="form">
+            <form onSubmit={this.handleSubmit}>
+              <label htmlFor="subject">Subject:</label>
+              <input type="text" value={this.state.subject} onChange={this.handleChange} id="subject" />
+              <br />
 
-            <label htmlFor="date">Date</label>
-            <input type="text" id="date" value={this.state.date} onChange={this.handleChange} />
-            <br />
+              <label htmlFor="date">Date</label>
+              <input type="text" id="date" value={this.state.date} onChange={this.handleChange} />
+              <br />
 
-            <label htmlFor="notes">Notes</label>
-            <input type="text" id="notes" value={this.state.notes} onClick={() => this.setState({ notes: ' ' })} onChange={this.handleChange} />
+              <label htmlFor="notes">Notes</label>
+              <input type="text" id="notes" value={this.state.notes} onClick={() => this.setState({ notes: ' ' })} onChange={this.handleChange} />
 
-            <br />
-            <input type="submit" />
-          </form>
-        </div>
-        <div className="showsTypingOnScreen">
-          <h1>New Item being Rendered </h1>
-          {this.state.subject}
-          {this.state.date}
-          {this.state.notes}
-        </div>
-
-        
+              <br />
+              <input type="submit" />
+            </form>
+          </div>
+          
+          </div>
+          <div className="showsTypingOnScreen">
+            <h1>New Item being Rendered </h1>
+            {this.state.subject}
+            {this.state.date}
+            {this.state.notes}
+          </div>
+        <div className="container2">
           <div className="list">{
             this.state.to_Do_List.map((task, index) => {
               // We need a extra param(Index) in the .map
@@ -119,8 +121,8 @@ class App extends Component {
 
             </ul>
           </div>
-        
 
+        </div>
 
 
 

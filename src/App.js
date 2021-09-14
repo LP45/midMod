@@ -10,7 +10,7 @@ class App extends Component {
     to_Do_List: to_Do_List,
     subject: "",
     date: "",
-    notes: "Write Notes In",
+    notes: "",
     newTask: [],
   }
 
@@ -72,7 +72,7 @@ class App extends Component {
               <br />
 
               <label htmlFor="notes">Notes</label>
-              <input type="text" id="notes" value={this.state.notes} onClick={() => this.setState({ notes: ' ' })} onChange={this.handleChange} />
+              <input type="text" id="notes" value={this.state.notes}  onChange={this.handleChange} placeholder="Write Notes In" />
 
               <br />
               <input type="submit" />

@@ -25,3 +25,14 @@
 .title{
   text-align: center;
 }
+.container2{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+}
+.container3{
+  display: flex;
+  justify-content: space-evenly;
+  border: 2px solid black;
+}

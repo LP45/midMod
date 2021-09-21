@@ -1,13 +1,73 @@
+// import React, {useState} from 'react';
+// import toDoList from "./data"
+// import {Link} from 'react-router-dom'
+// import Tasks from './tasks';
+
+// let toDoList = [
+
+//   {
+
+//       "subject": "Groceries",
+
+//       "date": "2/3/21",
+
+//       "notes": "Buy Milk, Bread,Eggs,and water"
+
+//   },
+
+//   {
+
+//       "subject": "Morning Run",
+
+//       "date": "1/4/21",
+
+//       "notes": "3 mile run around the lake"
+
+//   },
+//   {
+
+//       "subject": "Meet with Adam",
+
+//       "date": "2/2/20",
+
+//       "notes": "Dicuss future ventures and possible stock options"
+
+//   },
+
+// ]
+
+
+
+
+// const App = () => {
+// //use State will work with a state
+
+//  const [toDoList,setToDo] = useState(toDoList)
+
+//   return (
+//     <div>
+//       <Link to="./App.js">Home</Link>
+//       <Link to="./Task">Task</Link>
+//       <Link to="./contact">Contact</Link>
+//       <data toDoList={toDoList}/>
+//     </div>
+//   );
+// };
+
+// export default App;
+// **************************************************************************************
+// **************************************************************************************
 import React, { Component } from 'react';
 import CompletedList from './CompletedList';
-import to_Do_List from './data';
+import toDoList from './data';
+import Weather from './Weather';
 import Tasks from './Tasks';
-console.table(to_Do_List)
+console.table(toDoList)
 
 class App extends Component {
 
   state = {
-    to_Do_List: to_Do_List,
+    toDoList: toDoList,
     subject: "",
     date: "",
     notes: "",
@@ -15,7 +75,7 @@ class App extends Component {
   }
 
   handleChange = (event) => {
-    console.log("We are in handle change", event.target)
+    // console.log("We are in handle change", event.target)
 
     this.setState({
       [event.target.id]: event.target.value
@@ -32,7 +92,7 @@ class App extends Component {
       notes: this.state.notes,
     }
     this.setState({
-      to_Do_List: [newTask, ...this.state.to_Do_List],
+      toDoList: [newTask, ...this.state.toDoList],
       subject: "",
       date: " ",
       notes: " ",
@@ -44,16 +104,32 @@ class App extends Component {
 
 
   addToTask = (task) => {
-    console.log("We are in the add task function and we clicked on an item inside our taskList componenet and this item is sent back to App.js ", task)
+    // console.log("We are in the add task function and we clicked on an item inside our taskList componenet and this item is sent back to App.js ", event)
+    console.log(task)
     //Whatever item is we are going to add it to CARTITEM STATE
+    // let element = event.target
+    // console.log("WE are in ELEMENT!!!", element)
+    // element.classList.toggle('strike')
     this.setState({
       newTask: [task, ...this.state.newTask]
     });
 
-
+    let newList = this.state.toDoList.filter(item => item.subject !== task.subject)
+    this.setState({
+      toDoList:newList
+    
+    })
 
   };
-
+  strikeThrough = (event) =>{
+        
+    
+    // delete element
+    // element.classList.toggle('strike')
+    //I need to allow the strike through to only strike through the element that we clicked on
+    //Already kickin on the location. want thatc cto chhnage to the actual value
+    
+}
   render() {
     return (
       <div className="app"><div className="title"><h2>Welcome to Your Perosnal Reminder App</h2>
@@ -86,10 +162,13 @@ class App extends Component {
             {this.state.date}
             {this.state.notes}
           </div>
+          <Weather />
+          <h3>Task to Complete</h3>
         <div className="container2">
           <div className="list">{
-            this.state.to_Do_List.map((task, index) => {
+            this.state.toDoList.map((task, index) => {
               // We need a extra param(Index) in the .map
+
               return (
                 // <li>
                 //   {product.name} {product.price}
@@ -98,7 +177,10 @@ class App extends Component {
                 // <ProductList  {...this.state.products}/>
                 //  Each element in the products array is its own object
                 // Every child in an array needs a UNIQUE ID
-                <Tasks key={index} task={task} handleAdd={this.addToTask} />
+              
+                  <Tasks key={index}  handleAdd={this.addToTask} task={task}  />
+              
+                
               )
             })
           }
@@ -133,3 +215,4 @@ class App extends Component {
 }
 
 export default App;
+

@@ -1,9 +1,23 @@
+// import React from 'react';
+
+// const CompletedList = (props) => {
+//    console.log("We are inside Completed List! Props", props)   
+//     return (
+      
+//         <div>
+//             {props.item.subject} {props.item.date}{props.item.notes}
+//         </div>
+//     );
+// };
+
+// export default CompletedList;
+
 import React, { Component } from 'react';
 
 class CompletedList extends Component {
     
     render() {
-        console.log("We are inside Completed List!")
+        // console.log("We are inside Completed List!")
         return (
             
             <div>
